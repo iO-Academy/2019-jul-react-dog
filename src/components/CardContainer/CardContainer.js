@@ -6,9 +6,11 @@ class CardContainer extends React.Component {
         super(props)
 
         this.state = {
-            breed: '',
-            height: '',
-            temperament: ''
+            dogs: [],
+            name: '',
+            height: {
+                metric: ''
+            }
         }
     }
 
@@ -16,24 +18,44 @@ class CardContainer extends React.Component {
         this.getDogs()
     }
 
+    getRandomDog = (dataArray) => {
+        return dataArray[Math.floor(Math.random() * dataArray.length)];
+    }
+
     getDogs = () => {
         fetch('http://localhost:3000/dogs', {
             method: 'get'
         })
         .then((data) => data.json())
-        .then((res) => this.setState({
-            breed: res.data[0].name,
-            height: res.data[0].height.metric,
-            temperament: res.data[0].temperament
-        }))
+        .then((res) => {
+            if(res.success) {
+                console.log("Got Data Successfully")
+                console.log(res.data)
+                return res.data
+            } else {
+                console.log("Error")
+                return res.message
+            }
+        })
+            .then((res) => {
+                this.setState({
+                    dogs: [this.getRandomDog(res), this.getRandomDog(res)]
+                    }
+
+                )
+        })
     }
 
 
     render() {
         return (
             <div className="card-container">
-              <Card breed={this.state.breed} height={this.state.height} temperament={this.state.temperament} />
-              <Card breed={this.state.breed} height={this.state.height} temperament={this.state.temperament} />
+                {
+                    this.state.dogs.map((dog)=>{
+                        return <Card name={dog.name} height={dog.height.metric} temperament={dog.temperament} />
+
+                    })
+                }
             </div>
         )
     }
