@@ -1,19 +1,13 @@
 import React from 'react';
 import Card from "../Card/Card";
-
 import UniqueRandomArray from "unique-random-array";
-
 
 class CardContainer extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            dogs: [],
-            name: '',
-            height: {
-                metric: ''
-            }
+            dogs: []
         }
     }
 
@@ -28,8 +22,6 @@ class CardContainer extends React.Component {
         .then((data) => data.json())
         .then((res) => {
             if(res.success) {
-                console.log("Got Data Successfully")
-                console.log(res.data)
                 return res.data
             } else {
                 return res.message
