@@ -21,7 +21,6 @@ class CardContainer extends React.Component {
         this.getDogs()
     }
 
-
     getDogs = () => {
         fetch('http://localhost:3000/dogs', {
             method: 'get'
@@ -33,7 +32,6 @@ class CardContainer extends React.Component {
                 console.log(res.data)
                 return res.data
             } else {
-                //console.log("Error")
                 return res.message
             }
         })
@@ -52,7 +50,6 @@ class CardContainer extends React.Component {
                 {
                     this.state.dogs.map((dog)=>{
                         return <Card name={dog.name} height={dog.height.metric} temperament={dog.temperament} />
-
                     })
                 }
             </div>
