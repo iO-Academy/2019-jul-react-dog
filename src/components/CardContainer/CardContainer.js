@@ -15,11 +15,25 @@ class CardContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.getDogs()
+        let allDogs = this.getDogs()
+        let twoRandomDogs = this.shuffleDogsArrayPickTwo(allDogs)
+        this.setState({
+            dogs: twoRandomDogs
+        })
     }
 
     getRandomDog = (dataArray) => {
         return dataArray[Math.floor(Math.random() * dataArray.length)];
+    }
+
+    shuffleDogsArrayPickTwo = (dataArray) => {
+        let dog1 = this.getRandomDog(dataArray)
+        let dog2 = this.getRandomDog(dataArray)
+
+        while(dog1.id == dog2.id) {
+            dog2 = this.getRandomDog(dataArray)
+        }
+        return [dog1, dog2]
     }
 
     getDogs = () => {
@@ -29,23 +43,15 @@ class CardContainer extends React.Component {
         .then((data) => data.json())
         .then((res) => {
             if(res.success) {
-                console.log("Got Data Successfully")
-                console.log(res.data)
+                //console.log("Got Data Successfully")
+                //console.log(res.data)
                 return res.data
             } else {
-                console.log("Error")
+                //console.log("Error")
                 return res.message
             }
         })
-            .then((res) => {
-                this.setState({
-                    dogs: [this.getRandomDog(res), this.getRandomDog(res)]
-                    }
-
-                )
-        })
     }
-
 
     render() {
         return (
