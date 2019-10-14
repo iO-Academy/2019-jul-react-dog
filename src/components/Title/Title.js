@@ -4,11 +4,11 @@ class Title extends React.Component {
     render(){
         return (
             <div className="title-container">
-               <h3>I am the Title</h3>
+               <h1>I am the Title</h1>
                <div className="heading-container">
-                   <h3>I am the heading</h3>
+                   <h2>I am the heading</h2>
                </div>
-                <h4 className="instruction">Choose your favorite</h4>
+                <h3 className="instruction">Choose your favorite</h3>
             </div>
         )
     }
