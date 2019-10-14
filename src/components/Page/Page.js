@@ -1,6 +1,6 @@
-import React from 'react'
-import Title from '../Title/Title'
-import CardContainer from '../CardContainer/CardContainer'
+import React from 'react';
+import Title from "../Title/Title";
+import CardContainer from '../CardContainer/CardContainer';
 
 class Page extends React.Component {
     render() {
