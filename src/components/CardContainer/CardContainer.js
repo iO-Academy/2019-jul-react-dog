@@ -6,6 +6,11 @@ class CardContainer extends React.Component {
         super(props)
     }
 
+    getDogData = () => {
+
+    }
+
+
     render() {
         return (
             <div className="card-container">
