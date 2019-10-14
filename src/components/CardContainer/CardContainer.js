@@ -1,6 +1,9 @@
 import React from 'react';
 import Card from "../Card/Card";
 
+import UniqueRandomArray from "unique-random-array";
+
+
 class CardContainer extends React.Component {
     constructor(props) {
         super(props)
@@ -16,25 +19,25 @@ class CardContainer extends React.Component {
 
     componentDidMount() {
         let allDogs = this.getDogs()
-        let twoRandomDogs = this.shuffleDogsArrayPickTwo(allDogs)
-        this.setState({
-            dogs: twoRandomDogs
-        })
+        // let twoRandomDogs = this.shuffleDogsArrayPickTwo(allDogs)
+        // this.setState({
+        //     dogs: twoRandomDogs
+        // })
     }
 
-    getRandomDog = (dataArray) => {
-        return dataArray[Math.floor(Math.random() * dataArray.length)];
-    }
+    // getRandomDog = (dataArray) => {
+    //     return dataArray[Math.floor(Math.random() * dataArray.length)];
+    // }
 
-    shuffleDogsArrayPickTwo = (dataArray) => {
-        let dog1 = this.getRandomDog(dataArray)
-        let dog2 = this.getRandomDog(dataArray)
-
-        while(dog1.id == dog2.id) {
-            dog2 = this.getRandomDog(dataArray)
-        }
-        return [dog1, dog2]
-    }
+    // shuffleDogsArrayPickTwo = (dataArray) => {
+    //     let dog1 = this.getRandomDog(dataArray)
+    //     let dog2 = this.getRandomDog(dataArray)
+    //
+    //     while(dog1.id == dog2.id) {
+    //         dog2 = this.getRandomDog(dataArray)
+    //     }
+    //     return [dog1, dog2]
+    // }
 
     getDogs = () => {
         fetch('http://localhost:3000/dogs', {
@@ -43,14 +46,21 @@ class CardContainer extends React.Component {
         .then((data) => data.json())
         .then((res) => {
             if(res.success) {
-                //console.log("Got Data Successfully")
-                //console.log(res.data)
+                console.log("Got Data Successfully")
+                console.log(res.data)
                 return res.data
             } else {
                 //console.log("Error")
                 return res.message
             }
         })
+            .then((res) => {
+                let random = UniqueRandomArray(res)
+                    this.setState({
+                        dogs: [random(), random()]
+                    })
+                }
+            )
     }
 
     render() {
