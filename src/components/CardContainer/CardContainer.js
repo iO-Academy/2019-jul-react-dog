@@ -28,10 +28,10 @@ class CardContainer extends React.Component {
                 }
             })
             .then(res => {
-                    let random = UniqueRandomArray(res)
-                    let dogs = [random(), random()]
-                    const state = {...this.state, dogs: dogs}
-                    this.setState(state)
+                let random = UniqueRandomArray(res)
+                let dogs = [random(), random()]
+                const state = {...this.state, dogs: dogs}
+                this.setState(state)
                 }
             )
     }
