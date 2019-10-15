@@ -1,21 +1,14 @@
 import React from 'react'
 import Statistic from "../Statistic/Statistic"
 
-class Card extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
+function Card(props) {
         return (
             <div className="card">
-                <Statistic type="Breed" details={this.props.name}/>
-                <Statistic type="Height" details={this.props.height}/>
-                <Statistic type="Temperament" details={this.props.temperament}/>
+                <p><span className="card-key">Breed : </span><span className="card-value">{props.name}</span></p>
+                <p><span className="card-key">Height : </span><span className="card-value">{props.height}</span></p>
+                <p><span className="card-key">Temperament : </span><span className="card-value">{props.temperament}</span></p>
             </div>
         )
-    }
 }
 
 export default Card
