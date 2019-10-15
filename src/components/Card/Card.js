@@ -1,12 +1,6 @@
 import React from 'react'
 
-class Card extends React.Component {
-
-    constructor(props) {
-        super(props)
-    }
-
-    render() {
+function Card() {
         return (
             <div className="card">
                 <p><span className="card-key">Breed : </span><span className="card-value">{this.props.name}</span></p>
@@ -14,7 +8,6 @@ class Card extends React.Component {
                 <p><span className="card-key">Temperament : </span><span className="card-value">{this.props.temperament}</span></p>
             </div>
         )
-    }
 }
 
 export default Card
