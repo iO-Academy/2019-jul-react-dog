@@ -37,7 +37,6 @@ class CardContainer extends React.Component {
     }
 
     render() {
-
         return (
             <div className="card-container">
                 {
@@ -47,7 +46,7 @@ class CardContainer extends React.Component {
                             name={dog.name}
                             height={dog.height.metric + "cm"}
                             temperament={dog.temperament}/>
-                     })
+                    })
                 }
             </div>
         )
