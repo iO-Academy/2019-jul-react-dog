@@ -41,14 +41,12 @@ class CardContainer extends React.Component {
             <div className="card-container">
                 {
                     this.state.dogs.map(dog => {
-                        return (
-                            <Card
-                                name={dog.name}
-                                height={dog.height.metric + "cm"}
-                                temperament={dog.temperament}
-                            />
-                        )
-                    })
+                        return <Card
+                            key={dog.id}
+                            name={dog.name}
+                            height={dog.height.metric + "cm"}
+                            temperament={dog.temperament}/>
+                     })
                 }
             </div>
         )
