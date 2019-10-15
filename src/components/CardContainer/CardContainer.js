@@ -29,14 +29,15 @@ class CardContainer extends React.Component {
             })
             .then(res => {
                     let random = UniqueRandomArray(res)
-                    this.setState({
-                        dogs: [random(), random()]
-                    })
+                    const state = {...this.state}
+                    state.dogs = [random(), random()]
+                    this.setState(state)
                 }
             )
     }
 
     render() {
+
         return (
             <div className="card-container">
                 {
