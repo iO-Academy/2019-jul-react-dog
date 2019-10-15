@@ -4,10 +4,10 @@ import CardContainer from '../CardContainer/CardContainer'
 
 function Page() {
     return (
-        <div>
+        <>
             <Title/>
             <CardContainer/>
-        </div>
+        </>
     )
 }
 
