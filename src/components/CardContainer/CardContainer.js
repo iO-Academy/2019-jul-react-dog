@@ -40,7 +40,7 @@ class CardContainer extends React.Component {
         return (
             <div className="card-container">
                 {
-                    this.state.dogs.map((dog) => {
+                    this.state.dogs.map(dog => {
                         return <Card
                             key={dog.id}
                             name={dog.name}
