@@ -1,6 +1,6 @@
-import React from 'react';
-import Card from "../Card/Card";
-import UniqueRandomArray from "unique-random-array";
+import React from 'react'
+import Card from "../Card/Card"
+import UniqueRandomArray from "unique-random-array"
 
 class CardContainer extends React.Component {
     constructor(props) {
