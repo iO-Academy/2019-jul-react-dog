@@ -1,4 +1,5 @@
 import React from 'react'
+import Statistic from "../Statistic/Statistic"
 
 class Card extends React.Component {
 
@@ -9,9 +10,9 @@ class Card extends React.Component {
     render() {
         return (
             <div className="card">
-                <p><span className="card-key">Breed : </span><span className="card-value">{this.props.name}</span></p>
-                <p><span className="card-key">Height : </span><span className="card-value">{this.props.height}</span></p>
-                <p><span className="card-key">Temperament : </span><span className="card-value">{this.props.temperament}</span></p>
+                <Statistic type="Breed" details={this.props.name}/>
+                <Statistic type="Height" details={this.props.height}/>
+                <Statistic type="Temperament" details={this.props.temperament}/>
             </div>
         )
     }
