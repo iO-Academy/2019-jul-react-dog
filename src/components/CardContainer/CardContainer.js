@@ -19,16 +19,16 @@ class CardContainer extends React.Component {
         fetch('http://localhost:3000/dogs', {
             method: 'get'
         })
-        .then((data) => data.json())
-        .then((res) => {
-            if(res.success) {
-                return res.data
-            } else {
-                return res.message
-            }
-        })
+            .then((data) => data.json())
             .then((res) => {
-                let random = UniqueRandomArray(res)
+                if (res.success) {
+                    return res.data
+                } else {
+                    return res.message
+                }
+            })
+            .then((res) => {
+                    let random = UniqueRandomArray(res)
                     this.setState({
                         dogs: [random(), random()]
                     })
@@ -40,8 +40,8 @@ class CardContainer extends React.Component {
         return (
             <div className="card-container">
                 {
-                    this.state.dogs.map((dog)=>{
-                        return <Card name={dog.name} height={dog.height.metric} temperament={dog.temperament} />
+                    this.state.dogs.map((dog) => {
+                        return <Card name={dog.name} height={dog.height.metric} temperament={dog.temperament}/>
                     })
                 }
             </div>
