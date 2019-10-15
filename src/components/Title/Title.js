@@ -1,10 +1,10 @@
 import React from 'react'
 
-function Title() {
+function Title(props) {
     return (
         <div className="title-container">
-            <h1 className="Title">Hot Dog</h1>
-            <h2 className="instruction">Choose your favorite</h2>
+            <h1 className="Title">{props.titleText}</h1>
+            <h2 className="instruction">{props.instruction}</h2>
         </div>
     )
 }
