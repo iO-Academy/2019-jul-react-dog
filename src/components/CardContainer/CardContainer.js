@@ -30,10 +30,39 @@ class CardContainer extends React.Component {
             .then(res => {
                 let random = UniqueRandomArray(res)
                 let dogs = [random(), random()]
-                const state = {...this.state, dogs: dogs}
+                const state = {...this.state, dogs: dogs, randomDog: random}
                 this.setState(state)
                 }
             )
+    }
+
+    clickUpdateWin = (id) => {
+        //Rachmann work here
+        fetch('http://localhost:3000/dogs', {
+            method: 'PUT',
+            body: JSON.stringify({
+                winnerID: id
+            }),
+            headers: {
+                "Content-type": "application/json; charset=UTF-8"
+            }
+        })
+            .then(data => data.json())
+            .then(json => {
+                console.log(json)
+                console.log(id)
+            })
+    }
+
+
+    clickUpdateStateGetNewDogs = () => {
+        let dogs = [this.state.randomDog(), this.state.randomDog()]
+        while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
+        && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
+            dogs = [this.state.randomDog(), this.state.randomDog()]
+        }
+        const state = {...this.state, dogs: dogs}
+        this.setState(state)
     }
 
     render() {
@@ -48,7 +77,10 @@ class CardContainer extends React.Component {
                             temperament={dog.temperament}
                             id={dog._id}
                             winCount={dog.winCount}
-                            />
+                            clickEvent={(id)=>{
+                                this.clickUpdateWin(id)
+                                this.clickUpdateStateGetNewDogs()}}/>
+
                     })
                 }
             </div>
