@@ -7,7 +7,7 @@ function Card(props) {
             <Statistic type="Breed" details={props.name}/>
             <Statistic type="Height" details={props.height}/>
             <Statistic type="Temperament" details={props.temperament}/>
-            <button className="like-button"><span className="heart-icon">&#10084;</span> Like</button>
+            <button className="like-button" onClick={props.clickEvent}><span className="heart-icon">&#10084;</span> Like</button>
         </div>
     )
 }
