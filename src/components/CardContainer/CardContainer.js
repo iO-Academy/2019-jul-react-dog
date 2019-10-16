@@ -38,14 +38,14 @@ class CardContainer extends React.Component {
 
     clickUpdateWin = (id) => {
         //Rachmann work here
-        fetch('http://localhost:3000/dogs', {
-            method: 'PUT',
-            body: JSON.stringify({
-                winnerID: id
-            }),
-            headers: {
-                "Content-type": "application/json; charset=UTF-8"
-            }
+        fetch('http://localhost:3000/dogs/' + id, {
+            method: 'PUT'
+            // body: JSON.stringify({
+            //     winnerID: id
+            // }),
+            // headers: {
+            //     "Content-type": "application/json; charset=UTF-8"
+            // }
         })
             .then(data => data.json())
             .then(json => {
