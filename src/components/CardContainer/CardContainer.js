@@ -37,8 +37,6 @@ class CardContainer extends React.Component {
     }
 
     clickUpdateWin = () => {
-        //Matt work here
-        // document.getElementsByClassName("like-button").addEventListener("click", );
         let dogs = [this.state.randomDog(), this.state.randomDog()]
         while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
             && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
@@ -46,8 +44,6 @@ class CardContainer extends React.Component {
         }
         const state = {...this.state, dogs: dogs}
         this.setState(state)
-        //Rachmann work here
-        //this.getDogs()
     }
 
     render() {
