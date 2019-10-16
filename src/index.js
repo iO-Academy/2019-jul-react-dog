@@ -5,17 +5,15 @@ import './index.css'
 import Page from './components/Page/Page'
 import Notfound from './components/Notfound/Notfound'
 
-class Routing extends React.Component {
-    render() {
-        return (
-            <Router>
-                <Switch>
-                    <Route exact path="/" component={Page}/>
-                    <Route component={Notfound}/>
-                </Switch>
-            </Router>
-        )
-    }
+function Routing() {
+    return (
+        <Router>
+            <Switch>
+                <Route exact path="/" component={Page}/>
+                <Route component={Notfound}/>
+            </Switch>
+        </Router>
+    )
 }
 
 ReactDOM.render(<Routing/>, document.getElementById('root'))
