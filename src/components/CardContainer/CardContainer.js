@@ -37,7 +37,6 @@ class CardContainer extends React.Component {
     }
 
     clickUpdateWin = (id) => {
-        //Rachmann work here
         fetch('http://localhost:3000/dogs/' + id + "/win", {
             method: 'POST'
         })
