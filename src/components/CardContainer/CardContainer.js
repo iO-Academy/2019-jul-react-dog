@@ -48,7 +48,6 @@ class CardContainer extends React.Component {
             })
     }
 
-
     clickUpdateStateGetNewDogs = () => {
         let dogs = [this.state.randomDog(), this.state.randomDog()]
         while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
