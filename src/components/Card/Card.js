@@ -6,24 +6,29 @@ class Card extends React.Component  {
         super(props)
 
         this.state = {
-            dogs: [],
-            winCount: 0
         }
     }
+
+    componentDidMount() {
+        this.setState({dog: ''})
+    }
+
 
     clickUpdateWin = () => {
         //Matt work here
         // let dogWhoWon = this.props.key
         //Rachmann work here
         fetch('http://localhost:3000/dogs', {
-            method: 'put'
+            method: 'put',
+            body: JSON.stringify({
+                winnerID: 1
+            })
         })
             .then(data => data.json())
-            .then(res => {
-                console.log(res)
-                const state = {...this.state, winCount: this.props.winCount}
+            .then(json => {
+                console.log("hi")
+                const state = {...this.state, dog: json}
                 this.setState(state)
-                console.log(state.dogs)
             })
     }
 
