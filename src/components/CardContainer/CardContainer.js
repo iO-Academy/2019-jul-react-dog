@@ -40,6 +40,7 @@ class CardContainer extends React.Component {
         //Matt work here
         document.getElementsByClassName("like-button").addEventListener("click", );
         //Rachmann work here
+        this.getDogs()
     }
 
     render() {
