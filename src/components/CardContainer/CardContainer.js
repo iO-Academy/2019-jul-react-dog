@@ -38,7 +38,7 @@ class CardContainer extends React.Component {
 
     clickUpdateWin = () => {
         //Matt work here
-
+        document.getElementsByClassName("like-button").addEventListener("click", );
         //Rachmann work here
     }
 
