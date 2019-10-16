@@ -36,12 +36,6 @@ class CardContainer extends React.Component {
             )
     }
 
-    clickUpdateWin = () => {
-        //Matt work here
-        let dogWhoWon = this.props.key
-        //Rachmann work here
-    }
-
     render() {
         return (
             <div className="card-container">
@@ -52,7 +46,9 @@ class CardContainer extends React.Component {
                             name={dog.name}
                             height={dog.height.metric + "cm"}
                             temperament={dog.temperament}
-                            id={dog._id}/>
+                            id={dog._id}
+                            winCount={dog.winCount}
+                            />
                     })
                 }
             </div>
