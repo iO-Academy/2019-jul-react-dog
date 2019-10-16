@@ -50,7 +50,7 @@ class CardContainer extends React.Component {
     refreshDogs = () => {
         let dogs = [this.state.randomDog(), this.state.randomDog()]
         while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
-        && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
+            && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
             dogs = [this.state.randomDog(), this.state.randomDog()]
         }
         const state = {...this.state, dogs: dogs}
