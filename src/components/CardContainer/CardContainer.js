@@ -40,11 +40,6 @@ class CardContainer extends React.Component {
         fetch('http://localhost:3000/dogs/' + id + "/win", {
             method: 'POST'
         })
-            .then(data => data.json())
-            .then(json => {
-                console.log(json)
-                console.log(id)
-            })
     }
 
     refreshDogs = () => {
