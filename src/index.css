@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffeeca;
+  color: #212121;
 }
 
 h1 {
@@ -30,8 +31,34 @@ h1 {
   margin: 20px;
   padding: 20px;
   background-color: #ffcab9;
+  position: relative;
+  height: 160px;
 }
 
 .card-key {
   font-weight: bold;
+}
+
+.like-button {
+  width: 128px;
+  height: 42px;
+  border-radius: 8px;
+  border: 2px solid #b21807;
+  background: #ff8b6b;
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: -20px;
+  left: 40px;
+  cursor: pointer;
+  outline: none;
+}
+
+.like-button:hover {
+  background: rgba(255, 139, 107, .5);
+  transition: all 0.3s ease-in-out;
+
+}
+
+.heart-icon {
+  color: #b21807;
 }
