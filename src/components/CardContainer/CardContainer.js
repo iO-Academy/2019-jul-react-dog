@@ -38,7 +38,7 @@ class CardContainer extends React.Component {
 
     clickUpdateWin = () => {
         //Matt work here
-
+        let dogWhoWon = this.props.key
         //Rachmann work here
     }
 
