@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css?family=Londrina+Shadow&display=swap');
+
+body {
+  margin: 0;
+  font-family: Verdana, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #ffeeca;
+}
+
+h1 {
+  font-size: 5rem;
+}
+
+.title-container {
+  font-family: 'Londrina Shadow', cursive;
+  background-color: #ffcc5f;
+  text-align: center;
+  padding: 5px;
+}
+
+.card-container {
+  display: flex;
+  justify-content: space-around;
+}
+
+.card {
+  width: 40%;
+  border-radius: 20px;
+  margin: 20px;
+  padding: 20px;
+  background-color: #ffcab9;
+}
+
+.card-key {
+  font-weight: bold;
+}
