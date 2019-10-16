@@ -36,7 +36,13 @@ class CardContainer extends React.Component {
             )
     }
 
-    clickUpdateWin = () => {
+    clickUpdateWin = (id) => {
+        fetch('http://localhost:3000/dogs/' + id + "/win", {
+            method: 'POST'
+        })
+    }
+
+    refreshDogs = () => {
         let dogs = [this.state.randomDog(), this.state.randomDog()]
         while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
             && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
@@ -57,7 +63,9 @@ class CardContainer extends React.Component {
                             height={dog.height.metric + "cm"}
                             temperament={dog.temperament}
                             id={dog._id}
-                            clickEvent={this.clickUpdateWin}/>
+                            clickEvent={(id)=>{
+                                this.clickUpdateWin(id)
+                                this.refreshDogs()}}/>
                     })
                 }
             </div>
