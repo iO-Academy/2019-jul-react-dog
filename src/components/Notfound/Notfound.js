@@ -6,3 +6,5 @@ function Notfound() {
        <Title titleText="404 Page not Found" instruction="Sorry about that!"/>
     )
 }
+
+export default Notfound
