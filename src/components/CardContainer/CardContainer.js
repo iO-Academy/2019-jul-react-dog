@@ -45,7 +45,8 @@ class CardContainer extends React.Component {
                             key={dog.id}
                             name={dog.name}
                             height={dog.height.metric + "cm"}
-                            temperament={dog.temperament}/>
+                            temperament={dog.temperament}
+                            id={dog._id}/>
                     })
                 }
             </div>
