@@ -36,6 +36,12 @@ class CardContainer extends React.Component {
             )
     }
 
+    clickUpdateWin = () => {
+        //Matt work here
+
+        //Rachmann work here
+    }
+
     render() {
         return (
             <div className="card-container">
