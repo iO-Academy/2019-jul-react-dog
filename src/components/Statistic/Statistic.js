@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Statistic = (props) => {
+function Statistic(props) {
     return (
         <p>
             <span className="card-key">{props.type}: </span>
