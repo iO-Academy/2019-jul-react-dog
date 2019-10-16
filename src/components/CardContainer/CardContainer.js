@@ -47,7 +47,7 @@ class CardContainer extends React.Component {
             })
     }
 
-    clickUpdateStateGetNewDogs = () => {
+    refreshDogs = () => {
         let dogs = [this.state.randomDog(), this.state.randomDog()]
         while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
         && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
@@ -71,8 +71,7 @@ class CardContainer extends React.Component {
                             winCount={dog.winCount}
                             clickEvent={(id)=>{
                                 this.clickUpdateWin(id)
-                                this.clickUpdateStateGetNewDogs()}}/>
-
+                                this.refreshDogs()}}/>
                     })
                 }
             </div>
