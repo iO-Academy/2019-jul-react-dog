@@ -3,6 +3,8 @@ import Card from "../Card/Card"
 import UniqueRandomArray from "unique-random-array"
 import Message from '../Message/Message'
 
+const fetchUrl = 'http://localhost:3000/dogs/'
+
 class CardContainer extends React.Component {
     constructor(props) {
         super(props)
@@ -17,7 +19,7 @@ class CardContainer extends React.Component {
     }
 
     getDogs = () => {
-        fetch('http://localhost:3000/dogs', {
+        fetch(fetchUrl, {
             method: 'get'
         })
             .then(data => data.json())
@@ -29,32 +31,32 @@ class CardContainer extends React.Component {
                 }
             })
             .then(res => {
-                let random = UniqueRandomArray(res)
-                let dogs = [random(), random()]
-                const state = {...this.state, dogs: dogs, randomDog: random}
-                this.setState(state)
+                    let randomlySortedDogs= UniqueRandomArray(res)
+                    let dogs = [randomlySortedDogs(), randomlySortedDogs()]
+                    const state = {...this.state, dogs: dogs, getRandomDog: randomlySortedDogs}
+                    this.setState(state)
                 }
             )
     }
 
-    clickUpdateWin = (id) => {
-        fetch('http://localhost:3000/dogs/' + id + "/wins", {
+    sendWinToDb = id => {
+        fetch(fetchUrl + id + "/wins", {
             method: 'POST'
         })
     }
 
     refreshDogs = () => {
-        let dogs = [this.state.randomDog(), this.state.randomDog()]
+        let newDogs = [this.state.getRandomDog(), this.state.getRandomDog()]
         let state = this.state;
         for (let i = 0; i < 11; i++ ) {
             if (i === 10) {
                 state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'}
             } else {
-                if ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
-                    && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
-                    dogs = [this.state.randomDog(), this.state.randomDog()]
+                if ((newDogs[0]._id == this.state.dogs[0]._id || newDogs[0]._id == this.state.dogs[1]._id)
+                    && (newDogs[1]._id == this.state.dogs[0]._id || newDogs[1]._id == this.state.dogs[1]._id)) {
+                    newDogs = [this.state.getRandomDog(), this.state.getRandomDog()]
                 } else {
-                    state = {...this.state, dogs: dogs}
+                    state = {...this.state, dogs: newDogs}
                     break
                 }
             }
@@ -75,8 +77,8 @@ class CardContainer extends React.Component {
                     height={dog.height.metric + "cm"}
                     temperament={dog.temperament}
                     id={dog._id}
-                    clickEvent={(id)=>{
-                        this.clickUpdateWin(id)
+                    selectWinner={(id)=>{
+                        this.sendWinToDb(id)
                         this.refreshDogs()}}/>
             })
         }

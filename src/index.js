@@ -10,7 +10,7 @@ function Routing() {
         <Router>
             <Switch>
                 <Route exact path="/" component={Page}/>
-                <Route component={Notfound}/>
+                <Route path="*" component={Notfound}/>
             </Switch>
         </Router>
     )

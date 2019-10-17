@@ -23,16 +23,17 @@ h1 {
 .card-container {
   display: flex;
   justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .card {
   width: 40%;
   border-radius: 20px;
-  margin: 20px;
-  padding: 20px;
+  margin: 5px;
+  padding: 30px 30px 30px 5px;
   background-color: #ffcab9;
   position: relative;
-  height: 160px;
 }
 
 .card-key {
@@ -48,15 +49,15 @@ h1 {
   font-size: 1.2rem;
   position: absolute;
   bottom: -20px;
-  left: 40px;
+  left: 30px;
   cursor: pointer;
   outline: none;
+  z-index: 1;
 }
 
 .like-button:hover {
   background: rgba(255, 139, 107, .5);
   transition: all 0.3s ease-in-out;
-
 }
 
 .heart-icon {
