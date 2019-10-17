@@ -36,7 +36,7 @@ class CardContainer extends React.Component {
             )
     }
 
-    sendWinToDb = (id) => {
+    sendWinToDb = id => {
         fetch('http://localhost:3000/dogs/' + id + "/win", {
             method: 'POST'
         })
