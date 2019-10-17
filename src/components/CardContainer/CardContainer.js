@@ -63,7 +63,7 @@ class CardContainer extends React.Component {
                             height={dog.height.metric + "cm"}
                             temperament={dog.temperament}
                             id={dog._id}
-                            clickEvent={(id) => {
+                            selectWinner={id => {
                                 this.clickUpdateWin(id)
                                 this.refreshDogs()
                             }}/>

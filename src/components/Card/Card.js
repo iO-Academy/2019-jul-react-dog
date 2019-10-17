@@ -8,7 +8,7 @@ function Card(props) {
             <Statistic type="Height" details={props.height}/>
             <Statistic type="Temperament" details={props.temperament}/>
             <button className="like-button" onClick={()=>{
-                props.clickEvent(props.id)
+                props.selectWinner(props.id)
             }}>
                 <span
                 className="heart-icon">&#10084;</span> Like
