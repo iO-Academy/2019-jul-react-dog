@@ -10,7 +10,8 @@ class CardContainer extends React.Component {
         super(props)
 
         this.state = {
-            dogs: []
+            dogs: [],
+            message: null
         }
     }
 
@@ -47,21 +48,28 @@ class CardContainer extends React.Component {
 
     refreshDogs = () => {
         let newDogs = [this.state.getRandomDog(), this.state.getRandomDog()]
-        let state = this.state;
+        let state = {message: null}
         for (let i = 0; i < 11; i++ ) {
-            if (i === 10) {
-                state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'}
-            } else {
-                if ((newDogs[0]._id == this.state.dogs[0]._id || newDogs[0]._id == this.state.dogs[1]._id)
-                    && (newDogs[1]._id == this.state.dogs[0]._id || newDogs[1]._id == this.state.dogs[1]._id)) {
+            if (i < 10) {
+                if (this.haveDogsChanged(newDogs)) {
                     newDogs = [this.state.getRandomDog(), this.state.getRandomDog()]
                 } else {
                     state = {...this.state, dogs: newDogs}
                     break
                 }
             }
+            state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'
         }
         this.setState(state)
+    }
+
+    haveDogsChanged(newDogs) {
+        if ((newDogs[0]._id == this.state.dogs[0]._id || newDogs[0]._id == this.state.dogs[1]._id)
+            && (newDogs[1]._id == this.state.dogs[0]._id || newDogs[1]._id == this.state.dogs[1]._id)) {
+            return true
+        } else {
+            return false
+        }
     }
 
     render() {
