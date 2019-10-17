@@ -37,18 +37,31 @@ class CardContainer extends React.Component {
     }
 
     clickUpdateWin = (id) => {
-        fetch('http://localhost:3000/dogs/' + id + "/win", {
+        fetch('http://localhost:3000/dogs/' + id + "/wins", {
             method: 'POST'
         })
+        console.log('me pressed button')
     }
 
     refreshDogs = () => {
         let dogs = [this.state.randomDog(), this.state.randomDog()]
-        while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
-            && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
-            dogs = [this.state.randomDog(), this.state.randomDog()]
+        const state = this.state;
+        for (let i = 0; i < 11; i++ ) {
+            console.log('me check dogs' + i)
+            if (i === 10) {
+                state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'}
+                console.log('blarp')
+                break
+            } else {
+                if ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
+                && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
+                dogs = [this.state.randomDog(), this.state.randomDog()]
+                } else {
+                    state = {...this.state, dogs: dogs}
+                    break
+                }
+            }
         }
-        const state = {...this.state, dogs: dogs}
         this.setState(state)
     }
 
