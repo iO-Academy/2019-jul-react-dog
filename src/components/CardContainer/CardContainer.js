@@ -2,6 +2,8 @@ import React from 'react'
 import Card from "../Card/Card"
 import UniqueRandomArray from "unique-random-array"
 
+const fetchUrl = 'http://localhost:3000/dogs/'
+
 class CardContainer extends React.Component {
     constructor(props) {
         super(props)
@@ -16,7 +18,7 @@ class CardContainer extends React.Component {
     }
 
     getDogs = () => {
-        fetch('http://localhost:3000/dogs', {
+        fetch(fetchUrl, {
             method: 'get'
         })
             .then(data => data.json())
@@ -37,7 +39,8 @@ class CardContainer extends React.Component {
     }
 
     sendWinToDb = id => {
-        fetch('http://localhost:3000/dogs/' + id + "/win", {
+        fetch(fetchUrl + id + "/wins", {
+
             method: 'POST'
         })
     }
