@@ -43,12 +43,12 @@ class CardContainer extends React.Component {
     }
 
     refreshDogs = () => {
-        let dogs = [this.state.randomDog(), this.state.randomDog()]
-        while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
-        && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
-            dogs = [this.state.randomDog(), this.state.randomDog()]
+        let newDogs = [this.state.randomDog(), this.state.randomDog()]
+        while ((newDogs[0]._id == this.state.dogs[0]._id || newDogs[0]._id == this.state.dogs[1]._id)
+        && (newDogs[1]._id == this.state.dogs[0]._id || newDogs[1]._id == this.state.dogs[1]._id)) {
+            newDogs = [this.state.randomDog(), this.state.randomDog()]
         }
-        const state = {...this.state, dogs: dogs}
+        const state = {...this.state, dogs: newDogs}
         this.setState(state)
     }
 
