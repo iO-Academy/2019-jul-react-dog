@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from "../Card/Card"
 import UniqueRandomArray from "unique-random-array"
+import Message from '../Message/Message'
 
 const fetchUrl = 'http://localhost:3000/dogs/'
 
@@ -46,31 +47,44 @@ class CardContainer extends React.Component {
 
     refreshDogs = () => {
         let newDogs = [this.state.getRandomDog(), this.state.getRandomDog()]
-        while ((newDogs[0]._id == this.state.dogs[0]._id || newDogs[0]._id == this.state.dogs[1]._id)
-        && (newDogs[1]._id == this.state.dogs[0]._id || newDogs[1]._id == this.state.dogs[1]._id)) {
-            newDogs = [this.state.getRandomDog(), this.state.getRandomDog()]
+        let state = this.state;
+        for (let i = 0; i < 11; i++ ) {
+            if (i === 10) {
+                state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'}
+            } else {
+                if ((newDogs[0]._id == this.state.dogs[0]._id || newDogs[0]._id == this.state.dogs[1]._id)
+                    && (newDogs[1]._id == this.state.dogs[0]._id || newDogs[1]._id == this.state.dogs[1]._id)) {
+                    newDogs = [this.state.getRandomDog(), this.state.getRandomDog()]
+                } else {
+                    state = {...this.state, dogs: newDogs}
+                    break
+                }
+            }
         }
-        const state = {...this.state, dogs: newDogs}
         this.setState(state)
     }
 
     render() {
+        let output = ''
+        if (this.state.message) {
+            output = <Message text={this.state.message}/>
+        }
+        else {
+            output = this.state.dogs.map(dog => {
+                return <Card
+                    key={dog.id}
+                    name={dog.name}
+                    height={dog.height.metric + "cm"}
+                    temperament={dog.temperament}
+                    id={dog._id}
+                    selectWinner={(id)=>{
+                        this.sendWinToDb(id)
+                        this.refreshDogs()}}/>
+            })
+        }
         return (
             <div className="card-container">
-                {
-                    this.state.dogs.map(dog => {
-                        return <Card
-                            key={dog.id}
-                            name={dog.name}
-                            height={dog.height.metric + "cm"}
-                            temperament={dog.temperament}
-                            id={dog._id}
-                            selectWinner={id => {
-                                this.sendWinToDb(id)
-                                this.refreshDogs()
-                            }}/>
-                    })
-                }
+                {output}
             </div>
         )
     }

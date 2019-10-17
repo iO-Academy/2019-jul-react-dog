@@ -63,3 +63,9 @@ h1 {
 .heart-icon {
   color: #b21807;
 }
+
+.message-container {
+  width: 80%;
+  min-width: 200px;
+  margin: 40px auto;
+}
