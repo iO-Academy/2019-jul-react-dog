@@ -58,7 +58,7 @@ class CardContainer extends React.Component {
                     break
                 }
             }
-            state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'
+            state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'}
         }
         this.setState(state)
     }
