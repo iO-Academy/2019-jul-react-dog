@@ -2,7 +2,7 @@ import React from 'react'
 import Card from "../Card/Card"
 import UniqueRandomArray from "unique-random-array"
 
-const fetchUrl = 'http://localhost:3000/dogs'
+const fetchUrl = 'http://localhost:3000/dogs/'
 
 class CardContainer extends React.Component {
     constructor(props) {
