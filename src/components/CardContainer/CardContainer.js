@@ -41,17 +41,14 @@ class CardContainer extends React.Component {
         fetch('http://localhost:3000/dogs/' + id + "/wins", {
             method: 'POST'
         })
-        console.log('me pressed button')
     }
 
     refreshDogs = () => {
         let dogs = [this.state.randomDog(), this.state.randomDog()]
         let state = this.state;
         for (let i = 0; i < 11; i++ ) {
-            console.log('me check dogs' + i)
             if (i === 10) {
                 state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'}
-                console.log('blarp')
             } else {
                 if ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
                     && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
