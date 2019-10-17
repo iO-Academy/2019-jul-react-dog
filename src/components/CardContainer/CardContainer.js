@@ -36,7 +36,7 @@ class CardContainer extends React.Component {
             )
     }
 
-    clickUpdateWin = (id) => {
+    sendWinToDb = (id) => {
         fetch('http://localhost:3000/dogs/' + id + "/win", {
             method: 'POST'
         })
@@ -64,7 +64,7 @@ class CardContainer extends React.Component {
                             temperament={dog.temperament}
                             id={dog._id}
                             selectWinner={id => {
-                                this.clickUpdateWin(id)
+                                this.sendWinToDb(id)
                                 this.refreshDogs()
                             }}/>
                     })
