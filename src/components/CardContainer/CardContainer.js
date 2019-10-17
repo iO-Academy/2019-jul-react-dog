@@ -25,17 +25,15 @@ class CardContainer extends React.Component {
         })
             .then(data => data.json())
             .then(res => {
+                let state = {message: null}
                 if (res.success) {
-                    return res.data
-                } else {
-                    return res.message
-                }
-            })
-            .then(res => {
-                    let getRandomDog = UniqueRandomArray(res)
+                    let getRandomDog = UniqueRandomArray(res.data)
                     let dogs = [getRandomDog(), getRandomDog()]
-                    const state = {...this.state, dogs: dogs, getRandomDog: getRandomDog}
-                    this.setState(state)
+                    state = {...this.state, dogs: dogs, getRandomDog: getRandomDog}
+                } else {
+                     state = {...this.state, message: 'Sorry, someone let the dogs out. Refresh the page to try again!'}
+                }
+                this.setState(state)
                 }
             )
     }
