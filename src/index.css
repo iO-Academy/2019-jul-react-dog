@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: #ffeeca;
+  color: #212121;
 }
 
 h1 {
@@ -22,16 +23,49 @@ h1 {
 .card-container {
   display: flex;
   justify-content: space-around;
+  width: 80%;
+  margin: 0 auto;
 }
 
 .card {
   width: 40%;
   border-radius: 20px;
-  margin: 20px;
-  padding: 20px;
+  margin: 5px;
+  padding: 30px 30px 30px 5px;
   background-color: #ffcab9;
+  position: relative;
 }
 
 .card-key {
   font-weight: bold;
+}
+
+.like-button {
+  width: 128px;
+  height: 42px;
+  border-radius: 8px;
+  border: 2px solid #b21807;
+  background: #ff8b6b;
+  font-size: 1.2rem;
+  position: absolute;
+  bottom: -20px;
+  left: 30px;
+  cursor: pointer;
+  outline: none;
+  z-index: 1;
+}
+
+.like-button:hover {
+  background: rgba(255, 139, 107, .5);
+  transition: all 0.3s ease-in-out;
+}
+
+.heart-icon {
+  color: #b21807;
+}
+
+.message-container {
+  width: 80%;
+  min-width: 200px;
+  margin: 40px auto;
 }
