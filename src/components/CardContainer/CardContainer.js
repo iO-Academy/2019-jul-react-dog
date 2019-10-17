@@ -38,7 +38,7 @@ class CardContainer extends React.Component {
     }
 
     clickUpdateWin = (id) => {
-        fetch(this.state.fetchUrl + id + "/win", {
+        fetch(this.state.fetchUrl + id + "/wins", {
             method: 'POST'
         })
     }
