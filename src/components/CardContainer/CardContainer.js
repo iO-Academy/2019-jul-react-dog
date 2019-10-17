@@ -45,17 +45,16 @@ class CardContainer extends React.Component {
 
     refreshDogs = () => {
         let dogs = [this.state.randomDog(), this.state.randomDog()]
-        const state = this.state;
+        let state = this.state;
         for (let i = 0; i < 11; i++ ) {
             console.log('me check dogs' + i)
             if (i === 10) {
                 state = {...this.state, message: 'We are trying to get you some different dogs but we can\'t find any... maybe they are busy frolicking in the fields. Please refresh the page!'}
                 console.log('blarp')
-                break
             } else {
                 if ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
-                && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
-                dogs = [this.state.randomDog(), this.state.randomDog()]
+                    && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
+                    dogs = [this.state.randomDog(), this.state.randomDog()]
                 } else {
                     state = {...this.state, dogs: dogs}
                     break
@@ -66,21 +65,26 @@ class CardContainer extends React.Component {
     }
 
     render() {
+        let output = ''
+        if (this.state.message) {
+            output = <Message text={this.state.message}/>
+        }
+        else {
+            output = this.state.dogs.map(dog => {
+                return <Card
+                    key={dog.id}
+                    name={dog.name}
+                    height={dog.height.metric + "cm"}
+                    temperament={dog.temperament}
+                    id={dog._id}
+                    clickEvent={(id)=>{
+                        this.clickUpdateWin(id)
+                        this.refreshDogs()}}/>
+            })
+        }
         return (
             <div className="card-container">
-                {
-                    this.state.dogs.map(dog => {
-                        return <Card
-                            key={dog.id}
-                            name={dog.name}
-                            height={dog.height.metric + "cm"}
-                            temperament={dog.temperament}
-                            id={dog._id}
-                            clickEvent={(id)=>{
-                                this.clickUpdateWin(id)
-                                this.refreshDogs()}}/>
-                    })
-                }
+                {output}
             </div>
         )
     }
