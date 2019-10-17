@@ -1,6 +1,7 @@
 import React from 'react'
 import Card from "../Card/Card"
 import UniqueRandomArray from "unique-random-array"
+import Message from '../Message/Message'
 
 class CardContainer extends React.Component {
     constructor(props) {
