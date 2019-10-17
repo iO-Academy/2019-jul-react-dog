@@ -40,7 +40,6 @@ class CardContainer extends React.Component {
 
     sendWinToDb = id => {
         fetch(fetchUrl + id + "/wins", {
-
             method: 'POST'
         })
     }
