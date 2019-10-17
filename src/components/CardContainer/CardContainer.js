@@ -1,6 +1,6 @@
 import React from 'react'
 import Card from "../Card/Card"
-import UniqueRandomArray from "unique-random-array"
+import getRandomDog from "unique-random-array"
 import Message from '../Message/Message'
 
 const fetchUrl = 'http://localhost:3000/dogs/'
@@ -31,7 +31,7 @@ class CardContainer extends React.Component {
                 }
             })
             .then(res => {
-                    let randomlySortedDogs= UniqueRandomArray(res)
+                    let randomlySortedDogs= getRandomDog(res)
                     let dogs = [randomlySortedDogs(), randomlySortedDogs()]
                     const state = {...this.state, dogs: dogs, getRandomDog: randomlySortedDogs}
                     this.setState(state)
