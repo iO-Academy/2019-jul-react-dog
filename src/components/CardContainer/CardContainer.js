@@ -2,13 +2,14 @@ import React from 'react'
 import Card from "../Card/Card"
 import UniqueRandomArray from "unique-random-array"
 
+const fetchUrl = 'http://localhost:3000/dogs'
+
 class CardContainer extends React.Component {
     constructor(props) {
         super(props)
 
         this.state = {
-            dogs: [],
-            fetchUrl: 'http://localhost:3000/dogs'
+            dogs: []
         }
     }
 
@@ -17,7 +18,7 @@ class CardContainer extends React.Component {
     }
 
     getDogs = () => {
-        fetch(this.state.fetchUrl, {
+        fetch(fetchUrl, {
             method: 'get'
         })
             .then(data => data.json())
@@ -38,7 +39,7 @@ class CardContainer extends React.Component {
     }
 
     clickUpdateWin = (id) => {
-        fetch(this.state.fetchUrl + id + "/wins", {
+        fetch(fetchUrl + id + "/wins", {
             method: 'POST'
         })
     }
