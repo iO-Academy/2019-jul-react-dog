@@ -28,10 +28,10 @@ class CardContainer extends React.Component {
                 }
             })
             .then(res => {
-                let random = UniqueRandomArray(res)
-                let dogs = [random(), random()]
-                const state = {...this.state, dogs: dogs, randomDog: random}
-                this.setState(state)
+                    let random = UniqueRandomArray(res)
+                    let dogs = [random(), random()]
+                    const state = {...this.state, dogs: dogs, randomDog: random}
+                    this.setState(state)
                 }
             )
     }
@@ -45,7 +45,7 @@ class CardContainer extends React.Component {
     refreshDogs = () => {
         let dogs = [this.state.randomDog(), this.state.randomDog()]
         while ((dogs[0]._id == this.state.dogs[0]._id || dogs[0]._id == this.state.dogs[1]._id)
-            && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
+        && (dogs[1]._id == this.state.dogs[0]._id || dogs[1]._id == this.state.dogs[1]._id)) {
             dogs = [this.state.randomDog(), this.state.randomDog()]
         }
         const state = {...this.state, dogs: dogs}
@@ -63,9 +63,10 @@ class CardContainer extends React.Component {
                             height={dog.height.metric + "cm"}
                             temperament={dog.temperament}
                             id={dog._id}
-                            clickEvent={(id)=>{
+                            clickEvent={(id) => {
                                 this.clickUpdateWin(id)
-                                this.refreshDogs()}}/>
+                                this.refreshDogs()
+                            }}/>
                     })
                 }
             </div>
