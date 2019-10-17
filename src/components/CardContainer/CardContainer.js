@@ -7,7 +7,8 @@ class CardContainer extends React.Component {
         super(props)
 
         this.state = {
-            dogs: []
+            dogs: [],
+            fetchUrl: 'http://localhost:3000/dogs'
         }
     }
 
@@ -16,7 +17,7 @@ class CardContainer extends React.Component {
     }
 
     getDogs = () => {
-        fetch('http://localhost:3000/dogs', {
+        fetch(this.state.fetchUrl, {
             method: 'get'
         })
             .then(data => data.json())
@@ -37,7 +38,7 @@ class CardContainer extends React.Component {
     }
 
     clickUpdateWin = (id) => {
-        fetch('http://localhost:3000/dogs/' + id + "/win", {
+        fetch(this.state.fetchUrl + id + "/win", {
             method: 'POST'
         })
     }
